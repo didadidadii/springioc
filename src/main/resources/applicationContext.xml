@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+   <bean id="user1" class="com.xulihao.domain.User">
+      <property name="name" value="张三"></property>
+      <property name="addr" value="北京"></property>
+   </bean>
+   <bean id="user2" class="com.xulihao.domain.User">
+      <property name="name" value="李四"></property>
+      <property name="addr" value="上海"></property>
+   </bean>
+   <bean id="userDao" class="com.xulihao.dao.impl.UserDaoImpl" >
+      <property name="userMap">
+         <map>
+            <entry key="user1" value-ref="user1"/>
+            <entry key="user2" value-ref="user2"/>
+         </map>
+      </property>
+   </bean>
+   <bean id="userService" class="com.xulihao.service.impl.UserServiceImpl">
+      <property name="userDao" ref="userDao"></property>
+      <property name="stringList" >
+         <list>
+            <value>aaa</value>
+            <value>bbb</value>
+         </list>
+      </property>
+   </bean>
+</beans>
